@@ -1,0 +1,23 @@
+.app-img-choice-screen{
+  width: calc(100% - 50px);
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  bottom: 300px;
+}
+.app-buttons-container{
+  position: absolute;
+  bottom: 100px;
+  width: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  a{
+    color: var(--ion-color-tertiary);
+    text-decoration: none;
+  }
+}
+ion-content{
+  --padding-bottom: 100px;
+  --padding-top: 100px;
+}

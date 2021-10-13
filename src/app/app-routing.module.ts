@@ -8,9 +8,26 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'connection-choice',
     pathMatch: 'full'
   },
+  {
+    path: 'splashscreen',
+    loadChildren: () => import('./splashscreen/splashscreen.module').then( m => m.SplashscreenPageModule)
+  },
+  {
+    path: 'connection-choice',
+    loadChildren: () => import('./connection-choice/connection-choice.module').then( m => m.ConnectionChoicePageModule)
+  },
+  {
+    path: 'connection',
+    loadChildren: () => import('./connection/connection.module').then( m => m.ConnectionPageModule)
+  },
+  {
+    path: 'inscription',
+    loadChildren: () => import('./inscription/inscription.module').then( m => m.InscriptionPageModule)
+  },
+
 ];
 
 @NgModule({
