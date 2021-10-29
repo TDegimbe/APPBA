@@ -6,6 +6,9 @@ ion-input{
   --padding-bottom: 15px;
   --placeholder-color: var(--ion-color-secondary);
 }
+ion-input.error{
+  border: 1px solid #b60202;
+}
 ion-item{
   --border-width: 0px;
   --highlight-height: 0px;

@@ -1,23 +1,41 @@
-<form>
+<form [formGroup]="inscriptionForm" (ngSubmit)="onSubmit()">
   <ion-list>
     <ion-item>
-      <ion-input inputmode="text" color="secondary" placeholder="Prénom" required="true"></ion-input>
+      <div class="app-form-itemgroup">
+        <ion-input [class.error] = "errors['firstname'] !==undefined" inputmode="text" (ionBlur)="onChange('firstname')" color="secondary" placeholder="Prénom" name="firstname" formControlName="firstname" ngModel></ion-input>
+        <p class="error" *ngIf="errors['firstname'] !==undefined">{{ errors['firstname'] }}</p>
+      </div>
     </ion-item>
     <ion-item>
-      <ion-input inputmode="text"  color="secondary" placeholder="Nom" required="true"></ion-input>
+      <div class="app-form-itemgroup">
+        <ion-input [class.error] = "errors['lastname'] !==undefined" inputmode="text"  (ionBlur)="onChange('lastname')" color="secondary" placeholder="Nom" name="lastname" formControlName="lastname" ngModel></ion-input>
+        <p class="error" *ngIf="errors['lastname'] !==undefined">{{ errors['lastname'] }}</p>
+      </div>
     </ion-item>
     <ion-item>
-      <ion-input inputmode="text"  color="secondary" placeholder="Nom d'utilisateur" required="true"></ion-input>
+      <div class="app-form-itemgroup">
+        <ion-input [class.error] = "errors['user'] !==undefined" inputmode="text"  (ionBlur)="onChange('user')" color="secondary" placeholder="Nom d'utilisateur" name="user" formControlName="user" ngModel></ion-input>
+        <p class="error" *ngIf="errors['user'] !==undefined">{{ errors['user'] }}</p>
+      </div>
     </ion-item>
     <ion-item>
-      <ion-input inputmode="email" type="email" pattern="email" color="secondary" placeholder="E-mail" required="true"></ion-input>
+      <div class="app-form-itemgroup">
+        <ion-input [class.error] = "errors['email'] !==undefined" inputmode="email" (ionBlur)="onChange('email')" color="secondary" placeholder="E-mail" name="email" formControlName="email" ngModel></ion-input>
+        <p class="error" *ngIf="errors['email'] !==undefined">{{ errors['email'] }}</p>
+      </div>
     </ion-item>
     <ion-item>
-      <ion-input inputmode="tel" pattern="tel" color="secondary" placeholder="Numéro de téléphone" required="true"></ion-input>
+      <div class="app-form-itemgroup">
+        <ion-input [class.error] = "errors['phone'] !==undefined" inputmode="tel" (ionBlur)="onChange('phone')" color="secondary" placeholder="Numéro de téléphone" name="phone" formControlName="phone" ngModel></ion-input>
+        <p class="error" *ngIf="errors['phone'] !==undefined">{{ errors['phone'] }}</p>
+      </div>
     </ion-item>
     <ion-item>
-      <ion-input inputmode="text" type="password" pattern="password" color="secondary" placeholder="Mot de passe" required="true"></ion-input>
+      <div class="app-form-itemgroup">
+        <ion-input [class.error] = "errors['password'] !==undefined" inputmode="text" (ionBlur)="onChange('password')" type="password"  color="secondary" placeholder="Mot de passe" name="password" formControlName="password" ngModel></ion-input>
+        <p class="error" *ngIf="errors['password'] !==undefined">{{ errors['password'] }}</p>
+      </div>
     </ion-item>
   </ion-list>
-  <ion-button class="app-connection-button" expand="block">Continuer</ion-button>
+  <ion-button type="submit"  class="app-connection-button"  [disabled]="inscriptionForm.invalid" expand="block">Continuer</ion-button>
 </form>

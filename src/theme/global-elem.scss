@@ -1,3 +1,16 @@
+/* Form */
+form{
+  p.error{
+    color: #b60202;
+    display: block;
+    width: 100%;
+    margin: 2px 0px 0px;
+  }
+  .app-form-itemgroup{
+    width: 100%;
+  }
+}
+
 /* Connection */
 .app-connection-button{
   margin-bottom: 30px;
