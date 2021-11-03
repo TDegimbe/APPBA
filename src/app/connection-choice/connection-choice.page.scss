@@ -1,13 +1,17 @@
-.app-buttons-container{
+.app-container{
   position: absolute;
-  bottom: 100px;
+  top: 50%;
   width: 250px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%,-50%);
   text-align: center;
   a{
     color: var(--ion-color-tertiary);
     text-decoration: none;
+  }
+  img{
+    width: 150px;
+    margin-bottom: 100px;
   }
 }
 .app-filter{
