@@ -1,7 +1,7 @@
 {
   "name": "Miiga",
   "short_name": "Miiga",
-  "theme_color": "#1976d2",
+  "theme_color": "#FF2244",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",

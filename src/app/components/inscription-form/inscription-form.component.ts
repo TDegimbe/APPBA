@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 import {User} from "../../models/User.model";
 import {ToastController} from "@ionic/angular";
+import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-inscription-form',
@@ -14,7 +16,8 @@ export class InscriptionFormComponent implements OnInit {
   inscriptionForm: FormGroup;
   public errors = {};
 
-  constructor(private formBuilder: FormBuilder,private userService: UserService, private toastController: ToastController) { }
+  constructor(private formBuilder: FormBuilder,private userService: UserService,
+              private toastController: ToastController,private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.initForm();
@@ -41,10 +44,13 @@ export class InscriptionFormComponent implements OnInit {
               formValue.password,
               formValue.user.trim(),
               formValue.lastname.trim(),
-              formValue.firstname.trim()
+              formValue.firstname.trim(),
+              ""
             );
             this.userService.add(newUser);
-            this.presentToast();
+           this.authService.setUser(newUser);
+           this.router.navigate(["/home"]);
+
           }else{
             if(status1) this.errors['user'] = "Ce nom d'utilisateur est déjà utilisé";
             if(status2) this.errors['email'] = 'Cette addresse e-mail est déjà utilisée';
