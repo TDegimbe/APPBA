@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {AuthGuard} from "./guard/auth.guard";
+import {NonauthGuard} from "./guard/nonauth.guard";
 
 const routes: Routes = [
   {
@@ -10,24 +11,23 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'connection-choice',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
-    path: 'splashscreen',
-    loadChildren: () => import('./splashscreen/splashscreen.module').then( m => m.SplashscreenPageModule)
-  },
-  {
     path: 'connection-choice',
-    loadChildren: () => import('./connection-choice/connection-choice.module').then( m => m.ConnectionChoicePageModule)
+    loadChildren: () => import('./connection-choice/connection-choice.module').then( m => m.ConnectionChoicePageModule),
+    canActivate: [NonauthGuard]
   },
   {
     path: 'connection',
-    loadChildren: () => import('./connection/connection.module').then( m => m.ConnectionPageModule)
+    loadChildren: () => import('./connection/connection.module').then( m => m.ConnectionPageModule),
+    canActivate: [NonauthGuard]
   },
   {
     path: 'inscription',
-    loadChildren: () => import('./inscription/inscription.module').then( m => m.InscriptionPageModule)
+    loadChildren: () => import('./inscription/inscription.module').then( m => m.InscriptionPageModule),
+    canActivate: [NonauthGuard]
   },
 
 ];

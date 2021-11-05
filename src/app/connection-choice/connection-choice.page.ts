@@ -11,7 +11,7 @@ export class ConnectionChoicePage implements OnInit {
   constructor(public authService: AuthService) { }
 
   ngOnInit() {
-    this.authService.checkLocalStorage();
+    console.log(this.authService.isLogged());
   }
 
 }

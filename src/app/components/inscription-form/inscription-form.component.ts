@@ -5,6 +5,7 @@ import {User} from "../../models/User.model";
 import {ToastController} from "@ionic/angular";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
+import * as shajs from 'sha.js';
 
 @Component({
   selector: 'app-inscription-form',
@@ -38,6 +39,7 @@ export class InscriptionFormComponent implements OnInit {
     this.userService.checkIfExist(formValue.user).then(status1 => {
         this.userService.checkEmailUsed(formValue.email).then(status2 => {
           if(!status2 && !status1) {
+
             const newUser = new User(
               formValue.email.trim(),
               formValue.phone.trim(),
@@ -47,9 +49,18 @@ export class InscriptionFormComponent implements OnInit {
               formValue.firstname.trim(),
               ""
             );
+            let session = newUser.email + newUser.phone + newUser.user + newUser.firstname + Math.random();
+            session = shajs('sha256').update(session).digest('hex');
+            let password = newUser.password;
+            password = shajs('sha256').update(password).digest('hex');
+
+            newUser.password = password;
+            newUser.session = session
+
             this.userService.add(newUser);
-           this.authService.setUser(newUser);
-           this.router.navigate(["/home"]);
+            this.authService.setUser(newUser);
+            this.router.navigate(["/home"]);
+            this.presentToast();
 
           }else{
             if(status1) this.errors['user'] = "Ce nom d'utilisateur est déjà utilisé";

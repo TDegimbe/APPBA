@@ -8,6 +8,20 @@ import {AuthService} from "../services/auth.service";
 })
 export class HomePage {
 
-  constructor(public authService: AuthService) {}
+  public loaded = false;
+
+  constructor(public authService: AuthService) {
+    this.load();
+  }
+  load(){
+    this.authService.loadAuth().then(status => {
+      if(status){
+        this.loaded = true;
+      }
+    });
+  }
+  click(){
+    console.log(this.authService.getUser())
+  }
 
 }
