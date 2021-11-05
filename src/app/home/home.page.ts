@@ -14,10 +14,14 @@ export class HomePage {
     this.load();
   }
   load(){
-    this.authService.loadAuth().then(status => {
-      if(status){
-        this.loaded = true;
-      }
-    });
+    if (!this.authService.isLogged()) {
+      this.authService.loadAuth().then(status => {
+        if (status) {
+          this.loaded = true;
+        }
+      });
+    }else{
+      this.loaded = true;
+    }
   }
 }
