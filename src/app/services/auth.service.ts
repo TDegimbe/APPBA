@@ -31,6 +31,8 @@ export class AuthService {
             resolve(true);
           });
         }
+      }else{
+        resolve(true);
       }
     });
   }

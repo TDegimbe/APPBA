@@ -20,8 +20,4 @@ export class HomePage {
       }
     });
   }
-  click(){
-    console.log(this.authService.getUser())
-  }
-
 }
