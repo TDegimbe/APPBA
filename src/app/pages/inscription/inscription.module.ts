@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { InscriptionPageRoutingModule } from './inscription-routing.module';
 
 import { InscriptionPage } from './inscription.page';
-import {InscriptionFormModule} from '../components/inscription-form/inscription-form.module';
+import {InscriptionFormModule} from '../../components/inscription-form/inscription-form.module';
 
 @NgModule({
   imports: [

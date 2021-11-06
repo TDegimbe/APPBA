@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ConnectionPageRoutingModule } from './connection-routing.module';
 
 import { ConnectionPage } from './connection.page';
-import { ConnectionFormModule } from '../components/connection-form/connection-form.module';
+import { ConnectionFormModule } from '../../components/connection-form/connection-form.module';
 
 @NgModule({
   imports: [

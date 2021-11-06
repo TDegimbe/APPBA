@@ -1,18 +1,22 @@
-import { Component } from '@angular/core';
-import {AuthService} from "../services/auth.service";
+import { Component, OnInit } from '@angular/core';
+import {AuthService} from "../../services/auth.service";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-user-view',
+  templateUrl: './user-view.page.html',
+  styleUrls: ['./user-view.page.scss'],
 })
-export class HomePage {
+export class UserViewPage implements OnInit {
 
   public loaded = false;
 
   constructor(public authService: AuthService) {
+  }
+
+  ngOnInit() {
     this.load();
   }
+  
   load(){
     if (!this.authService.isLogged()) {
       this.authService.loadAuth().then(status => {
@@ -24,4 +28,5 @@ export class HomePage {
       this.loaded = true;
     }
   }
+
 }

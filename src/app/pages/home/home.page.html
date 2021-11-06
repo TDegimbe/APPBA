@@ -1,0 +1,17 @@
+<ion-content>
+  <!--<ion-button (click)="authService.logout()">Déconnexion</ion-button>
+  <p *ngIf="loaded == true">Bonjour {{ authService.getUser().firstname }}</p>-->
+  <ion-tabs>
+    <ion-tab-bar slot="top">
+      <ion-tab-button tab="user-view">
+        <ion-icon name="person"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="annonces">
+        <ion-icon name="copy"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="add-annonce">
+        <ion-icon name="create"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

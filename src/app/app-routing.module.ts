@@ -5,30 +5,25 @@ import {NonauthGuard} from "./guard/nonauth.guard";
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
-    canActivate: [AuthGuard]
-  },
-  {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'connection-choice',
-    loadChildren: () => import('./connection-choice/connection-choice.module').then( m => m.ConnectionChoicePageModule),
+    loadChildren: () => import('./pages/connection-choice/connection-choice.module').then( m => m.ConnectionChoicePageModule),
     canActivate: [NonauthGuard]
   },
   {
     path: 'connection',
-    loadChildren: () => import('./connection/connection.module').then( m => m.ConnectionPageModule),
+    loadChildren: () => import('./pages/connection/connection.module').then( m => m.ConnectionPageModule),
     canActivate: [NonauthGuard]
   },
   {
     path: 'inscription',
-    loadChildren: () => import('./inscription/inscription.module').then( m => m.InscriptionPageModule),
+    loadChildren: () => import('./pages/inscription/inscription.module').then( m => m.InscriptionPageModule),
     canActivate: [NonauthGuard]
-  },
+  }
+
 
 ];
 
