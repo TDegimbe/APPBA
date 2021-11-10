@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {User} from "../models/User.model";
 import {UserService} from "./user.service";
 import {Router} from "@angular/router";
+import * as shajs from 'sha.js';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,26 @@ export class AuthService {
 
   constructor(public userService: UserService, public router: Router) { }
 
-  public auth(username,password){
-    //faire une vérif de mdp et connecter le user
+  public auth(username,password) : Promise<boolean>{
+      return new Promise((resolve) => {
+        this.userService.getAll().then(usersList => {
+          let connected = false;
+          let usertoconnect: User;
+          usersList.forEach(user => {
+            let cryptedpass = shajs('sha256').update(password).digest('hex');
+            if(user.password == cryptedpass && user.user == username){
+              connected = true;
+              usertoconnect = user;
+            }
+          });
+          if(!connected){
+            resolve(false)
+          }else{
+            this.setUser(usertoconnect)
+            resolve(true);
+          }
+        });
+      });
   }
 
   public loadAuth() : Promise<boolean>{
@@ -40,7 +59,7 @@ export class AuthService {
     return session !== "undefined";
   }
 
-  public setUser(user,){
+  public setUser(user){
     this.user = user;
     this.islogged = true;
     if(localStorage.getItem("session") === "undefined"){
@@ -55,8 +74,8 @@ export class AuthService {
   public logout(){
     this.islogged = false;
     this.user = null;
-    this.router.navigate(["/connection-choice"]);
     localStorage.setItem("session", "undefined");
+    this.router.navigate(["/connection-choice"]);
   }
 
   public isLogged(): boolean{
