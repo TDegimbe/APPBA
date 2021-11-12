@@ -1,11 +1,17 @@
 <form>
   <ion-list>
     <ion-item lines="none">
-      <ion-input inputmode="text"  color="secondary" placeholder="Nom d'utilisateur" required="true"></ion-input>
+      <div class="app-form-itemgroup">
+        <ion-input [class.error] = "errors['user'] !==undefined" inputmode="text"  (ionBlur)="onChange('user')" color="secondary" placeholder="Nom d'utilisateur" name="user" formControlName="user" ngModel></ion-input>
+        <p class="error" *ngIf="errors['user'] !==undefined">{{ errors['user'] }}</p>
+      </div>
     </ion-item>
     <ion-item lines="none">
-      <ion-input inputmode="text" type="password" pattern="password" color="secondary" placeholder="Mot de passe" required="true"></ion-input>
+      <div class="app-form-itemgroup">
+        <ion-input [class.error] = "errors['password'] !==undefined" inputmode="text" (ionBlur)="onChange('password')" type="password"  color="secondary" placeholder="Mot de passe" name="password" formControlName="password" ngModel></ion-input>
+        <p class="error" *ngIf="errors['password'] !==undefined">{{ errors['password'] }}</p>
+      </div>
     </ion-item>
   </ion-list>
-    <ion-button class="app-connection-button" expand="block">Continuer</ion-button>
+  <ion-button type="submit"  class="app-connection-button"  [disabled]="connectionForm.invalid" expand="block">Continuer</ion-button>
 </form>
