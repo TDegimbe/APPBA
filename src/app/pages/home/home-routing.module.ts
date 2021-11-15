@@ -12,6 +12,10 @@ const routes: Routes = [
       {
         path: 'user-view',
         loadChildren: () => import('../user-view/user-view.module').then( m => m.UserViewPageModule)
+      },
+      {
+        path: 'my-meetings',
+        loadChildren: () => import('../my-meetings/my-meetings.module').then(m => m.MyMeetingsPageModule)
       }
     ]
   },

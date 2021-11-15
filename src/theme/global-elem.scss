@@ -1,3 +1,15 @@
+/* Button */
+.app-button-light{
+  width: 100%;
+  --background: white;
+  color: var(--ion-color-primary);
+  font-weight: normal;
+  text-transform: none;
+  --padding-bottom: 22px;
+  --padding-top: 22px;
+  --border-radius: 6px;
+}
+
 /* Form */
 form{
   p.error{

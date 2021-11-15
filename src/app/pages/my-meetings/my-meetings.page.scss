@@ -1,0 +1,15 @@
+ion-content{
+  --background: transparent;
+  --padding-start: 15px;
+  --padding-end: 15px;
+}
+ion-button{
+  margin-bottom: 20px;
+}
+.app-toggle-container{
+  --background: transparent;
+  --padding-start: 0px;
+  ion-label{
+    color: white;
+  }
+}

@@ -22,7 +22,15 @@ const routes: Routes = [
     path: 'inscription',
     loadChildren: () => import('./pages/inscription/inscription.module').then( m => m.InscriptionPageModule),
     canActivate: [NonauthGuard]
+  },
+  {
+    path: 'add-meeting',
+    loadChildren: () => import('./pages/add-meeting/add-meeting.module').then( m => m.AddMeetingPageModule),
+    canActivate: [AuthGuard]
   }
+
+
+
 
 
 ];
