@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth.service";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-connection-choice',
@@ -8,10 +9,9 @@ import {AuthService} from "../../services/auth.service";
 })
 export class ConnectionChoicePage implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(private authService: AuthService, private userService: UserService) { }
 
   ngOnInit() {
-
   }
 
 }

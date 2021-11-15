@@ -3,6 +3,7 @@ import {User} from "../models/User.model";
 import {UserService} from "./user.service";
 import {Router} from "@angular/router";
 import * as shajs from 'sha.js';
+import {AngularFirestore} from "@angular/fire/compat/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -12,28 +13,37 @@ export class AuthService {
   private user : User;
   private islogged : boolean = false;
 
-  constructor(public userService: UserService, public router: Router) { }
+  constructor(public userService: UserService, public router: Router, private firestore: AngularFirestore) { }
 
   public auth(username,password) : Promise<boolean>{
-      return new Promise((resolve) => {
-        this.userService.getAll().then(usersList => {
-          let connected = false;
-          let usertoconnect: User;
-          usersList.forEach(user => {
-            let cryptedpass = shajs('sha256').update(password).digest('hex');
-            if(user.password == cryptedpass && user.user == username){
-              connected = true;
-              usertoconnect = user;
-            }
-          });
-          if(!connected){
-            resolve(false)
-          }else{
-            this.setUser(usertoconnect)
-            resolve(true);
-          }
-        });
+    return new Promise((resolve) => {
+      let connected = false;
+      let usertoconnect: User;
+
+      const usersCollection = this.firestore.collection('Users');
+      let cryptedpass = shajs('sha256').update(password).digest('hex');
+      const query = usersCollection.ref.where("user","==",username)
+        .where("password","==",cryptedpass)
+      query.get().then(array => {
+        if(!array.empty){
+          const data: any = array.docs[0].data();
+          usertoconnect = new User(
+            data.email,
+            data.phone,
+            data.password,
+            data.user,
+            data.lastname,
+            data.firstname,
+            data.session
+          );
+          connected = true;
+          this.setUser(usertoconnect)
+        }else{
+          connected = false;
+        }
+        resolve(connected);
       });
+    });
   }
 
   public loadAuth() : Promise<boolean>{

@@ -16,7 +16,7 @@ export class UserViewPage implements OnInit {
   ngOnInit() {
     this.load();
   }
-  
+
   load(){
     if (!this.authService.isLogged()) {
       this.authService.loadAuth().then(status => {
