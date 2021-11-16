@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {CheckboxRequiredValidator, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 import {User} from "../../models/User.model";
 import {ToastController} from "@ionic/angular";
@@ -85,7 +85,8 @@ export class InscriptionFormComponent implements OnInit {
       user: ['', Validators.required],
       email: ['', [Validators.required,Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]],
       phone: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      cgu: [false, Validators.requiredTrue]
     });
   }
 

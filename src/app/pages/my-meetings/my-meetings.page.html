@@ -1,5 +1,5 @@
 <ion-content>
-  <ion-button (click)="router.navigate(['/add-meeting'])" class="app-button-light">Planifier un évènement</ion-button>
+  <ion-button [routerLink]="['/add-meeting']"  class="app-button-light">Planifier un évènement</ion-button>
   <ion-item class="app-toggle-container" lines="none">
     <ion-label>Afficher les évènements passés</ion-label>
     <ion-toggle mode="md"></ion-toggle>
