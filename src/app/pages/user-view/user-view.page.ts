@@ -8,7 +8,7 @@ import {AuthService} from "../../services/auth.service";
 })
 export class UserViewPage implements OnInit {
 
-  public loaded = false;
+  public loaded: boolean = false;
 
   constructor(public authService: AuthService) {
   }

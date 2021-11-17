@@ -13,3 +13,7 @@ ion-button{
     color: white;
   }
 }
+.app-card-container{
+  overflow: auto;
+  height: calc(100vh - 220px);
+}

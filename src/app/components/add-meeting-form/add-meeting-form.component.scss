@@ -1,0 +1,39 @@
+ion-item{
+  --background: transparent;
+  color: white;
+  --border-color: white;
+  --color-focused: white;
+  --color-activated: white;
+  --background-focused: transparent;
+  --background-hover: transparent;
+  --color-hover: white;
+  --highlight-color-focused: white;
+}
+ion-list{
+  background: transparent;
+}
+*{
+  --highlight-height: 0px;
+}
+ion-input{
+  --background: transparent;
+  --placeholder-opacity: 1;
+  --placeholder-color: white;
+}
+ion-select{
+  --placeholder-opacity: 1;
+  --placeholder-color: white;
+}
+ion-datetime{
+  --placeholder-color: white;
+}
+ion-textarea{
+  --placeholder-opacity: 1;
+  height: 100px;
+}
+ion-button{
+  margin-top: 30px;
+}
+form{
+  margin-top: 40px;
+}

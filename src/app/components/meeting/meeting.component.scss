@@ -1,0 +1,28 @@
+img{
+  height: 100px;
+  width: 100%;
+  object-fit: cover;
+}
+.app-badge{
+  font-size: 12px;
+  height: 30px;
+  color: white;
+  display: inline-block;
+  margin: 3px;
+  padding: 5px 10px;
+  line-height: 20px;
+  background-color: var(--ion-color-primary);
+  border-radius: 20px;
+  ion-icon{
+    position: relative;
+    height: 10px;
+    .icon-inner{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+.app-card-footer{
+  padding: 12px;
+}

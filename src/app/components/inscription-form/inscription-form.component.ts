@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CheckboxRequiredValidator, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 import {User} from "../../models/User.model";
 import {ToastController} from "@ionic/angular";

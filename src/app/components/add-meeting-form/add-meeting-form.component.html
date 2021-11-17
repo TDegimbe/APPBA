@@ -1,0 +1,35 @@
+<form [formGroup]="addmeetingForm" (ngSubmit)="onSubmit()">
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="Titre de l'annonce" type="text" formControlName="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select placeholder="Sport" cancelText="Fermer" formControlName="sport">
+        <ion-select-option>FootBall</ion-select-option>
+        <ion-select-option>Mini-Foot</ion-select-option>
+        <ion-select-option>BasketBall</ion-select-option>
+        <ion-select-option>Tennis</ion-select-option>
+        <ion-select-option>Fitness/Muscu</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Nombre de places" type="number" formControlName="nb_peoples"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Lieu" type="text" formControlName="location"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-datetime placeholder="Date"
+                    monthNames="[janvier,février,mars,avril,mai,juin,juillet,août,septembre,octobre,novembre,décembre]"
+                    monthShortNames="[jan, fév, mar, avr, mai, juin, juil, août, sept, oct, nov, déc]"
+                    dayNames="[lundi, mardi, mecredi, jeudi, vendredi, samedi, dimanche]"
+                    dayShortNames="[lun, mar, mer, jeu, vend, sam, dim]"
+                    doneText="Valider"
+                    cancelText="Fermer" formControlName="date" displayFormat="DD MM YYYY H:mm"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-textarea placeholder="Description" formControlName="description"></ion-textarea>
+    </ion-item>
+    <ion-button type="submit" class="app-button-light" [disabled]="addmeetingForm.invalid">Proposer</ion-button>
+  </ion-list>
+</form>

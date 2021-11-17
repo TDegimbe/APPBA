@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { AddMeetingPageRoutingModule } from './add-meeting-routing.module';
 
 import { AddMeetingPage } from './add-meeting.page';
+import {AddMeetingFormModule} from "../../components/add-meeting-form/add-meeting-form.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddMeetingPageRoutingModule
+    AddMeetingPageRoutingModule,
+    AddMeetingFormModule
   ],
   declarations: [AddMeetingPage]
 })
