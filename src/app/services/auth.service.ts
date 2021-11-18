@@ -4,6 +4,7 @@ import {UserService} from "./user.service";
 import {Router} from "@angular/router";
 import * as shajs from 'sha.js';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
+import {MeetingService} from "./meeting.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class AuthService {
   private user : User;
   private islogged : boolean = false;
 
-  constructor(public userService: UserService, public router: Router, private firestore: AngularFirestore) { }
+  constructor(public userService: UserService, public router: Router, private firestore: AngularFirestore,
+              private meetingService: MeetingService) { }
 
   public auth(username,password) : Promise<boolean>{
     return new Promise((resolve) => {
@@ -37,7 +39,7 @@ export class AuthService {
             data.session
           );
           connected = true;
-          this.setUser(usertoconnect)
+          this.setUser(usertoconnect);
         }else{
           connected = false;
         }
@@ -72,6 +74,8 @@ export class AuthService {
   public setUser(user){
     this.user = user;
     this.islogged = true;
+    this.meetingService.connectedUser = user;
+    this.meetingService.getMyMeetings();
     if(localStorage.getItem("session") === "undefined"){
       localStorage.setItem("session", user.session);
     }
@@ -84,8 +88,11 @@ export class AuthService {
   public logout(){
     this.islogged = false;
     this.user = null;
+    this.meetingService.connectedUser = null;
+    this.meetingService.clearMyMeetings();
     localStorage.setItem("session", "undefined");
     this.router.navigate(["/connection-choice"]);
+
   }
 
   public isLogged(): boolean{
