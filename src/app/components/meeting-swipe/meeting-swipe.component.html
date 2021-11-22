@@ -23,14 +23,14 @@
       <ion-icon *ngIf="meeting.sport == 'FootBall' " name="football"></ion-icon>
       <ion-icon *ngIf="meeting.sport == 'Tennis' " name="tennisball"></ion-icon>
       <ion-icon *ngIf="meeting.sport == 'Mini-Foot' " name="football"></ion-icon>
-      <ion-icon *ngIf="meeting.sport == 'Fitness' " name="barbell"></ion-icon>
+      <ion-icon *ngIf="meeting.sport == 'Fitness/Muscu' " name="barbell"></ion-icon>
       {{ meeting.sport }}</div>
     <div class="app-badge">
       <ion-icon name="location"></ion-icon>
       {{ meeting.location }}</div>
     <div class="app-badge">
       <ion-icon name="calendar-clear"></ion-icon>
-      {{ meeting.date | date : 'd/M/y h:mm' }}</div>
+      {{ meeting.date | date : 'd/M/y à h:mm' }}</div>
     <div class="app-badge">
       <ion-icon name="people"></ion-icon>
       {{ meeting.nb_peoples }}</div>

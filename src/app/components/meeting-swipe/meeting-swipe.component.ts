@@ -2,7 +2,7 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Meeting} from "../../models/Meeting.model";
 import {User} from "../../models/User.model";
 import {UserService} from "../../services/user.service";
-import {Animation, AnimationController } from '@ionic/angular';
+import {AnimationController } from '@ionic/angular';
 
 @Component({
   selector: 'app-meeting-swipe',
