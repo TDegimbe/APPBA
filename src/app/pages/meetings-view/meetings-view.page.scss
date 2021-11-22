@@ -1,0 +1,29 @@
+ion-content{
+  --background: transparent;
+  --padding-start: 15px;
+  --padding-end: 15px;
+}
+.show-filter{
+  position: fixed;
+  top: 8px;
+  left: 22px;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  z-index: 202020;
+  text-align: center;
+  ion-icon{
+    color: #727272;
+    font-size: 24px;
+    height: 40px;
+  }
+}
+ion-slides {
+  height: calc(100% - 100px);
+  margin-bottom: 100px;
+}
+ion-slide{
+  position: relative;
+  background-color: white;
+}

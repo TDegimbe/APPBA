@@ -5,7 +5,7 @@
     <ion-toggle mode="md"></ion-toggle>
   </ion-item>
   <div class="app-card-container" *ngIf="myMeetings.size != 0">
-    <app-meeting *ngFor="let MeetingMap of myMeetings | keyvalue; let i = index" [meeting]="MeetingMap.value" [id]="MeetingMap.key"></app-meeting>
+    <app-meeting *ngFor="let MeetingMap of myMeetings | keyvalue" [meeting]="MeetingMap.value" [id]="MeetingMap.key"></app-meeting>
   </div>
   <ion-item *ngIf="myMeetings.size == 0" class="ion-text-center">
     <ion-label>

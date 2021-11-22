@@ -16,12 +16,16 @@ const routes: Routes = [
       {
         path: 'my-meetings',
         loadChildren: () => import('../my-meetings/my-meetings.module').then(m => m.MyMeetingsPageModule)
+      },
+      {
+        path: 'meetings-view',
+        loadChildren: () => import('../meetings-view/meetings-view.module').then(m => m.MeetingsViewPageModule)
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/home/user-view',
+    redirectTo: '/home/meetings-view',
     pathMatch: 'full'
   }
 ];

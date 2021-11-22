@@ -1,0 +1,41 @@
+<img src="https://prd-cam-website-statics.s3.eu-west-1.amazonaws.com/content/uploads/2019/02/terrain-foot.jpg" alt="">
+<div #slide_content class="app-slide-content">
+  <div class="app-top" (click)="toggleDesc()">
+      <h2>{{ meeting.title }}</h2>
+      <ion-icon *ngIf="!descshowed" name="chevron-up" large></ion-icon>
+      <ion-icon *ngIf="descshowed" name="chevron-down" large></ion-icon>
+  </div>
+  <div class="app-middle">
+    <div class="app-user-container">
+      <div class="app-user-info" *ngIf="loaded">
+        <div class="app-pp"> {{ user.firstname.charAt(0) }} {{ user.lastname.charAt(0) }}</div>
+        <span> {{ user.firstname }}</span>
+      </div>
+    </div>
+    <div class="app-buttons-container">
+      <ion-button><ion-icon name="mail-outline"></ion-icon></ion-button>
+      <ion-button><ion-icon name="bookmark-outline"></ion-icon></ion-button>
+    </div>
+  </div>
+  <div class="app-bottom">
+    <div class="app-badge">
+      <ion-icon *ngIf="meeting.sport == 'BasketBall' " name="basketball"></ion-icon>
+      <ion-icon *ngIf="meeting.sport == 'FootBall' " name="football"></ion-icon>
+      <ion-icon *ngIf="meeting.sport == 'Tennis' " name="tennisball"></ion-icon>
+      <ion-icon *ngIf="meeting.sport == 'Mini-Foot' " name="football"></ion-icon>
+      <ion-icon *ngIf="meeting.sport == 'Fitness' " name="barbell"></ion-icon>
+      {{ meeting.sport }}</div>
+    <div class="app-badge">
+      <ion-icon name="location"></ion-icon>
+      {{ meeting.location }}</div>
+    <div class="app-badge">
+      <ion-icon name="calendar-clear"></ion-icon>
+      {{ meeting.date | date : 'd/M/y h:mm' }}</div>
+    <div class="app-badge">
+      <ion-icon name="people"></ion-icon>
+      {{ meeting.nb_peoples }}</div>
+  </div>
+  <div class="app-description">
+    <p>{{ meeting.description }}</p>
+  </div>
+</div>

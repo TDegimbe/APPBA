@@ -37,7 +37,6 @@ export class MeetingService {
   }
 
   public getMyMeetings(){
-    console.log("test");
     const meetingsCollection: AngularFirestoreCollection<Meeting> = this.firestore.collection('Meetings', ref => ref.where("user","==", this.connectedUser.session));
     meetingsCollection.snapshotChanges().subscribe(value => {
       value.forEach(action => {
@@ -48,6 +47,23 @@ export class MeetingService {
       this.emitMyMeetingsSubject();
     });
   }
+
+  public getSlideMeetings(): Promise<Map<String,Meeting>> {
+    return new Promise<Map<String,Meeting>>(resolve => {
+      const meetingsCollection: AngularFirestoreCollection<Meeting> = this.firestore.collection('Meetings');
+      meetingsCollection.get().toPromise().then(array => {
+        const meetings: Map<String,Meeting> = new Map<String, Meeting>();
+        array.forEach(doc => {
+          const meeting = doc.data() as Meeting;
+          const id = doc.id;
+          meetings.set(id,meeting);
+        });
+        resolve(meetings);
+      });
+    });
+  }
+
+
 
 
 }

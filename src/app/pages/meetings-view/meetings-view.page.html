@@ -1,0 +1,11 @@
+<ion-content>
+  <div class="show-filter">
+    <ion-icon name="options-outline"></ion-icon>
+  </div>
+  <ion-slides>
+    <ion-slide *ngFor="let MeetingMap of meetings | keyvalue">
+      <app-meeting-swipe [meeting]="MeetingMap.value" [id]="MeetingMap.key">
+      </app-meeting-swipe>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

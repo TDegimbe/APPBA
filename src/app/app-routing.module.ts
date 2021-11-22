@@ -27,7 +27,8 @@ const routes: Routes = [
     path: 'add-meeting',
     loadChildren: () => import('./pages/add-meeting/add-meeting.module').then( m => m.AddMeetingPageModule),
     canActivate: [AuthGuard]
-  },  {
+  },
+  {
     path: 'cgu',
     loadChildren: () => import('./pages/cgu/cgu.module').then( m => m.CguPageModule)
   }
