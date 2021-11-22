@@ -2,6 +2,7 @@ ion-content{
   --background: transparent;
   --padding-start: 15px;
   --padding-end: 15px;
+  --overflow: hidden;
 }
 .show-filter{
   position: fixed;
@@ -20,7 +21,7 @@ ion-content{
   }
 }
 ion-slides {
-  height: calc(100% - 100px);
+  height: calc(100% - 30px);
   margin-bottom: 100px;
 }
 ion-slide{
