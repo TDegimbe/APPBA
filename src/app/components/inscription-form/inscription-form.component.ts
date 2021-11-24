@@ -65,7 +65,7 @@ export class InscriptionFormComponent implements OnInit {
             this.userService.add(newUser);
             this.authService.setUser(newUser);
             this.verificationCodeService.genPhoneandMailCode(newUser);
-            this.router.navigate(["/home"]);
+            this.router.navigate(["/verifcode"]);
             this.presentToast();
 
           }else{
