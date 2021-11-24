@@ -22,7 +22,7 @@ export class VerificationcodeService {
       console.log(value);
     });
   }
-  public verifCodes(user: User,phonecode: number, mailcode: number): Promise<boolean>{
+  public verifCodes(user: User,phonecode: number, mailcode: number): Promise<any>{
     return new Promise<boolean>(resolve => {
       const body = {
         user_session: user.session,
@@ -32,9 +32,12 @@ export class VerificationcodeService {
       };
       this.http.post("https://sportifs.lpow.ephec.be/verification.php",body).toPromise().then(value => {
         console.log(value);
-        if(value == "1"){
+        if(value['status'] == "success"){
           this.presentToast();
           this.router.navigate(['/home']);
+          resolve(true);
+        }else{
+          resolve(value['errors']);
         }
       });
     });
@@ -62,7 +65,6 @@ export class VerificationcodeService {
           resolve(true);
         }
       });
-      resolve(false);
     });
   }
 }

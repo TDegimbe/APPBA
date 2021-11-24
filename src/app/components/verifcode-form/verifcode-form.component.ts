@@ -31,8 +31,14 @@ export class VerifcodeFormComponent implements OnInit {
   onSubmit(){
     const formValue = this.verifCodeForm.value;
     this.verificationCodeService.verifCodes(this.authService.getUser(),formValue.phonecode,formValue.mailcode).then(value => {
-      if(value){
-        //code valide
+      if(value != true){
+        value.forEach(error =>{
+          if(error == "invalid_phone_code"){
+            this.errors['phonecode'] = "Code invalide"
+          }else if(error == "invalid_mail_code"){
+            this.errors['mailcode'] = "Code invalide"
+          }
+        });
       }
     });
   }
