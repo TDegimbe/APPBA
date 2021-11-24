@@ -6,6 +6,7 @@ import {ToastController} from "@ionic/angular";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import * as shajs from 'sha.js';
+import {VerificationcodeService} from "../../services/verificationcode.service";
 
 @Component({
   selector: 'app-inscription-form',
@@ -17,7 +18,7 @@ export class InscriptionFormComponent implements OnInit {
   inscriptionForm: FormGroup;
   public errors = {};
 
-  constructor(private formBuilder: FormBuilder,private userService: UserService,
+  constructor(private formBuilder: FormBuilder,private userService: UserService, private verificationCodeService: VerificationcodeService,
               private toastController: ToastController,private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -38,11 +39,13 @@ export class InscriptionFormComponent implements OnInit {
     const formValue = this.inscriptionForm.value;
     this.userService.checkIfExist(formValue.user).then(status1 => {
         this.userService.checkEmailUsed(formValue.email).then(status2 => {
+
+          console.log(formValue);
           if(!status2 && !status1) {
 
             const newUser = new User(
               formValue.email.trim(),
-              formValue.phone.trim(),
+              formValue.phone.internationalNumber.replaceAll(" ",""),
               formValue.password,
               formValue.user.trim(),
               formValue.lastname.trim(),
@@ -57,8 +60,11 @@ export class InscriptionFormComponent implements OnInit {
             newUser.password = password;
             newUser.session = session
 
+            console.log(newUser);
+
             this.userService.add(newUser);
             this.authService.setUser(newUser);
+            this.verificationCodeService.genPhoneandMailCode(newUser);
             this.router.navigate(["/home"]);
             this.presentToast();
 

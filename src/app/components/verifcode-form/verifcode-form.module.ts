@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 
 import { IonicModule } from '@ionic/angular';
-import {InscriptionFormComponent} from './inscription-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from "@angular/router";
-import {IonIntlTelInputModule} from "ion-intl-tel-input";
+import {VerifcodeFormComponent} from "./verifcode-form.component";
 
 @NgModule({
   imports: [
@@ -13,14 +12,13 @@ import {IonIntlTelInputModule} from "ion-intl-tel-input";
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    RouterModule,
-    IonIntlTelInputModule
+    RouterModule
   ],
   exports: [
-    InscriptionFormComponent
+    VerifcodeFormComponent
   ],
   declarations: [
-    InscriptionFormComponent
+    VerifcodeFormComponent
   ]
 })
-export class InscriptionFormModule {}
+export class VerifcodeFormModule {}

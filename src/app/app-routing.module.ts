@@ -31,7 +31,11 @@ const routes: Routes = [
   {
     path: 'cgu',
     loadChildren: () => import('./pages/cgu/cgu.module').then( m => m.CguPageModule)
+  },  {
+    path: 'verifcode',
+    loadChildren: () => import('./pages/verifcode/verifcode.module').then( m => m.VerifcodePageModule)
   }
+
 
 
 

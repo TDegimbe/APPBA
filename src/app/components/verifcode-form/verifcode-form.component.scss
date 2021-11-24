@@ -9,15 +9,6 @@ ion-input{
 ion-input.error{
   border: 1px solid #b60202;
 }
-ion-intl-tel-input{
-  border: 1px solid var(--ion-color-secondary);
-  padding: 10px 15px;
-  --placeholder-color: var(--ion-color-secondary);
-  color: var(--ion-color-secondary);
-  .flag-icon{
-    margin-left: 10px;
-  }
-}
 ion-item{
   --border-width: 0px;
   --highlight-height: 0px;
@@ -31,4 +22,5 @@ form{
     width: 250px;
     margin: 50px auto 0px;
   }
+
 }

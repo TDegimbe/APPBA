@@ -32,7 +32,14 @@
               },
               "src/manifest.webmanifest"
             ],
-            "styles": ["src/theme/variables.scss", "src/global.scss"],
+            "styles": [
+              "src/theme/variables.scss",
+              "src/global.scss",
+              "./node_modules/intl-tel-input/build/css/intlTelInput.css",
+              {
+                "input": "./node_modules/flag-icon-css/sass/flag-icons.scss"
+              }
+            ],
             "scripts": [],
             "aot": false,
             "vendorChunk": true,

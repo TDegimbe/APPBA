@@ -1,0 +1,17 @@
+<form [formGroup]="verifCodeForm" (ngSubmit)="onSubmit()">
+  <ion-list>
+    <ion-item lines="none">
+      <div class="app-form-itemgroup">
+        <ion-input [class.error] = "errors['phonecode'] !==undefined" inputmode="number"  (ionBlur)="onChange('phonecode')" color="secondary" type="number" placeholder="Code téléphone" name="phonecode" formControlName="phonecode"></ion-input>
+        <p class="error" *ngIf="errors['phonecode'] !==undefined">{{ errors['phonecode'] }}</p>
+      </div>
+    </ion-item>
+    <ion-item lines="none">
+      <div class="app-form-itemgroup">
+        <ion-input [class.error] = "errors['mailcode'] !==undefined" inputmode="number" (ionBlur)="onChange('mailcode')" type="number"  color="secondary" placeholder="Code e-mail" name="mailcode" formControlName="mailcode"></ion-input>
+        <p class="error" *ngIf="errors['mailcode'] !==undefined">{{ errors['mailcode'] }}</p>
+      </div>
+    </ion-item>
+  </ion-list>
+  <ion-button type="submit"  class="app-connection-button"  [disabled]="verifCodeForm.invalid" expand="block">Continuer</ion-button>
+</form>

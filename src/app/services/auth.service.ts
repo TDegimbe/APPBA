@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import * as shajs from 'sha.js';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {MeetingService} from "./meeting.service";
+import {VerificationcodeService} from "./verificationcode.service";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AuthService {
   private islogged : boolean = false;
 
   constructor(public userService: UserService, public router: Router, private firestore: AngularFirestore,
-              private meetingService: MeetingService) { }
+              private meetingService: MeetingService, private verificationCodeService: VerificationcodeService) { }
 
   public auth(username,password) : Promise<boolean>{
     return new Promise((resolve) => {
@@ -79,6 +80,11 @@ export class AuthService {
     if(localStorage.getItem("session") === "undefined"){
       localStorage.setItem("session", user.session);
     }
+    this.verificationCodeService.isValid(this.getUser()).then(value => {
+      if(!value){
+        this.router.navigate(['/verifcode']);
+      }
+    });
   }
 
   public getUser(): User{

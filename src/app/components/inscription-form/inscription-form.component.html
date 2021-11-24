@@ -26,7 +26,14 @@
     </ion-item>
     <ion-item lines="none">
       <div class="app-form-itemgroup">
-        <ion-input [class.error] = "errors['phone'] !==undefined" inputmode="tel" (ionBlur)="onChange('phone')" color="secondary" placeholder="Numéro de téléphone" name="phone" formControlName="phone"></ion-input>
+        <ion-intl-tel-input
+          modalTitle="Sélectionner un pays"
+          [onlyCountries]="['be','fr']"
+          modalCloseText="Fermer"
+          [modalCanSearch]="false"
+          modalSearchPlaceholder="Nom du pays"
+          modalSearchFailText="Aucun pays trouvé"
+          [class.error] = "errors['phone'] !==undefined" inputmode="tel" (numberBlur)="onChange('phone')"  inputPlaceholder="Numéro de téléphone" name="phone" formControlName="phone"></ion-intl-tel-input >
         <p class="error" *ngIf="errors['phone'] !==undefined">{{ errors['phone'] }}</p>
       </div>
     </ion-item>
