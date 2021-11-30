@@ -34,6 +34,10 @@ const routes: Routes = [
   },  {
     path: 'verifcode',
     loadChildren: () => import('./pages/verifcode/verifcode.module').then( m => m.VerifcodePageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
   }
 
 
