@@ -1,7 +1,7 @@
 <ion-content>
   <!--<ion-button (click)="authService.logout()">Déconnexion</ion-button>
   <p *ngIf="loaded == true">Bonjour {{ authService.getUser().firstname }}</p>-->
-  <ion-tabs>
+  <ion-tabs #page>
     <ion-tab-bar slot="top">
       <ion-tab-button tab="user-view">
         <ion-icon name="person"></ion-icon>

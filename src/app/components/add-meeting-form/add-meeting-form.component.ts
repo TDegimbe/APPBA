@@ -28,11 +28,15 @@ export class AddMeetingFormComponent implements OnInit {
     const newMeeting = new Meeting(
       formValue.title,
       formValue.sport,
+      formValue.level,
+      formValue.spirit,
       formValue.nb_peoples,
       formValue.location,
+      formValue.cost,
       formValue.date,
       formValue.description,
-      this.authService.getUser().session
+      this.authService.getUser().session,
+      false
     );
     this.meetingService.add(newMeeting);
     this.presentToast();
@@ -54,7 +58,10 @@ export class AddMeetingFormComponent implements OnInit {
       nb_peoples: ['', Validators.required],
       location: ['', Validators.required],
       date: ['', Validators.required],
-      description: ['', Validators.required]
+      description: ['', Validators.required],
+      cost: [''],
+      level: ['', Validators.required],
+      spirit: ['', Validators.required]
     });
   }
 

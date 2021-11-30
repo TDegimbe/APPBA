@@ -1,10 +1,10 @@
 <form [formGroup]="addmeetingForm" (ngSubmit)="onSubmit()">
   <ion-list>
     <ion-item>
-      <ion-input placeholder="Titre de l'annonce" type="text" formControlName="title"></ion-input>
+      <ion-input placeholder="Titre de l'annonce *" type="text" formControlName="title"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-select placeholder="Sport" cancelText="Fermer" formControlName="sport">
+      <ion-select placeholder="Sport *" cancelText="Fermer" formControlName="sport">
         <ion-select-option>FootBall</ion-select-option>
         <ion-select-option>Mini-Foot</ion-select-option>
         <ion-select-option>BasketBall</ion-select-option>
@@ -13,13 +13,33 @@
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Nombre de places" type="number" formControlName="nb_peoples"></ion-input>
+      <ion-select placeholder="Niveau *" cancelText="Fermer" formControlName="level">
+        <ion-select-option>Niveau 1</ion-select-option>
+        <ion-select-option>Niveau 2</ion-select-option>
+        <ion-select-option>Niveau 3</ion-select-option>
+        <ion-select-option>Niveau 4</ion-select-option>
+        <ion-select-option>Niveau 5</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Lieu" type="text" formControlName="location"></ion-input>
+      <ion-select placeholder="Etat d'esprit *" cancelText="Fermer" formControlName="spirit">
+        <ion-select-option>Détente</ion-select-option>
+        <ion-select-option>Compétition</ion-select-option>
+        <ion-select-option>En famille</ion-select-option>
+        <ion-select-option>Bon enfant</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
-      <ion-datetime placeholder="Date"
+      <ion-input placeholder="Nombre de places *" type="number" formControlName="nb_peoples"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Lieu *" type="text" formControlName="location"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Frais éventuels" type="number" formControlName="cost"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-datetime placeholder="Date *"
                     monthNames="[janvier,février,mars,avril,mai,juin,juillet,août,septembre,octobre,novembre,décembre]"
                     monthShortNames="[jan, fév, mar, avr, mai, juin, juil, août, sept, oct, nov, déc]"
                     dayNames="[lundi, mardi, mecredi, jeudi, vendredi, samedi, dimanche]"
@@ -28,7 +48,7 @@
                     cancelText="Fermer" formControlName="date" displayFormat="DD MM YYYY H:mm"></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-textarea placeholder="Description" formControlName="description"></ion-textarea>
+      <ion-textarea placeholder="Description *" formControlName="description"></ion-textarea>
     </ion-item>
     <ion-button type="submit" class="app-button-light" [disabled]="addmeetingForm.invalid">Proposer</ion-button>
   </ion-list>

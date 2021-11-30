@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -6,11 +6,12 @@ import {Router} from "@angular/router";
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage{
 
   constructor(public router: Router) {
     if(this.router.url == "/home"){
-      this.router.navigate(["/home/user-view"]);
+      this.router.navigate(["/home/meetings-view"]);
     }
   }
+
 }

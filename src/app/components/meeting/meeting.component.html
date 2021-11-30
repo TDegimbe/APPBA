@@ -1,4 +1,4 @@
-<ion-card>
+<ion-card [ngClass]="{'full': meeting.isfull}">
   <img src="https://ericheymans.b-cdn.net/wp-content/uploads/2012/08/dawn-field-grass-164025.jpg" alt=""/>
   <ion-card-header>
     <ion-card-title>{{ meeting.title }}</ion-card-title>
@@ -8,21 +8,35 @@
     {{ meeting.description }}
   </ion-card-content>
   <div class="app-card-footer">
-    <div class="app-badge">
-      <ion-icon *ngIf="meeting.sport == 'BasketBall' " name="basketball"></ion-icon>
-      <ion-icon *ngIf="meeting.sport == 'FootBall' " name="football"></ion-icon>
-      <ion-icon *ngIf="meeting.sport == 'Tennis' " name="tennisball"></ion-icon>
-      <ion-icon *ngIf="meeting.sport == 'Mini-Foot' " name="football"></ion-icon>
-      <ion-icon *ngIf="meeting.sport == 'Fitness/Muscu' " name="barbell"></ion-icon>
-      {{ meeting.sport }}</div>
-    <div class="app-badge">
-      <ion-icon name="location"></ion-icon>
-      {{ meeting.location }}</div>
-    <div class="app-badge">
-      <ion-icon name="calendar-clear"></ion-icon>
-      {{ meeting.date | date : 'd/M/y à h:mm' }}</div>
-    <div class="app-badge">
-      <ion-icon name="people"></ion-icon>
-      {{ meeting.nb_peoples }}</div>
+    <div class="app-badge-container">
+      <div class="app-badge">
+        <ion-icon *ngIf="meeting.sport == 'BasketBall' " name="basketball"></ion-icon>
+        <ion-icon *ngIf="meeting.sport == 'FootBall' " name="football"></ion-icon>
+        <ion-icon *ngIf="meeting.sport == 'Tennis' " name="tennisball"></ion-icon>
+        <ion-icon *ngIf="meeting.sport == 'Mini-Foot' " name="football"></ion-icon>
+        <ion-icon *ngIf="meeting.sport == 'Fitness/Muscu' " name="barbell"></ion-icon>
+        {{ meeting.sport }}</div>
+      <div class="app-badge">
+        <ion-icon name="location"></ion-icon>
+        {{ meeting.location }}</div>
+      <div class="app-badge">
+        <ion-icon name="calendar-clear"></ion-icon>
+        {{ meeting.date | date : 'd/M/y à h:mm' }}</div>
+      <div class="app-badge">
+        <ion-icon name="people"></ion-icon>
+        {{ meeting.nb_peoples }}</div>
+      <div class="app-badge">
+        <ion-icon name="play"></ion-icon>
+        {{ meeting.spirit }}</div>
+      <div class="app-badge">
+        <ion-icon name="speedometer"></ion-icon>
+        {{ meeting.level }}</div>
+      <div class="app-badge" *ngIf="meeting.cost != ''">
+        <ion-icon name="cash"></ion-icon>
+        {{ meeting.cost }}</div>
+    </div>
+    <div class="app-button-container">
+      <ion-button (click)="setFullToggle()">Complet</ion-button>
+    </div>
   </div>
 </ion-card>

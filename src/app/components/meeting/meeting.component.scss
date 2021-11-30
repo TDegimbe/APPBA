@@ -23,6 +23,17 @@ img{
     }
   }
 }
+.app-button-container{
+  margin-top: 10px;
+  ion-button{
+    --color: var(--ion-color-primary);
+    --background: white;
+    text-transform: none;
+  }
+}
 .app-card-footer{
   padding: 12px;
+}
+.full{
+  opacity: 0.8;
 }

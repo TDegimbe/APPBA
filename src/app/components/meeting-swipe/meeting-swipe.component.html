@@ -13,8 +13,7 @@
       </div>
     </div>
     <div class="app-buttons-container">
-      <ion-button><ion-icon name="mail-outline"></ion-icon></ion-button>
-      <ion-button><ion-icon name="bookmark-outline"></ion-icon></ion-button>
+      <ion-button *ngIf="loaded" href="tel:{{ user.phone }}"><ion-icon name="mail-outline"></ion-icon></ion-button>
     </div>
   </div>
   <div class="app-bottom">
@@ -34,6 +33,15 @@
     <div class="app-badge">
       <ion-icon name="people"></ion-icon>
       {{ meeting.nb_peoples }}</div>
+    <div class="app-badge">
+      <ion-icon name="play"></ion-icon>
+      {{ meeting.spirit }}</div>
+    <div class="app-badge">
+      <ion-icon name="speedometer"></ion-icon>
+      {{ meeting.level }}</div>
+    <div class="app-badge" *ngIf="meeting.cost != ''">
+      <ion-icon name="logo-euro"></ion-icon>
+      {{ meeting.cost }}€</div>
   </div>
   <div class="app-description">
     <p>{{ meeting.description }}</p>

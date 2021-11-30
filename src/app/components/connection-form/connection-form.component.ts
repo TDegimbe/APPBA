@@ -31,7 +31,7 @@ export class ConnectionFormComponent implements OnInit {
     const formValue = this.connectionForm.value;
     this.authService.auth(formValue.user,formValue.password).then(status1 =>{
       if(status1){
-        this.router.navigate(["/home"]);
+        this.router.navigate(["/home/meetings-view"]);
       }
       else{
         this.errors['password'] = "Le nom d'utilisateur ou le mot de passe est incorrect"

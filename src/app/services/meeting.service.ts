@@ -11,6 +11,10 @@ export class MeetingService {
 
   private myMeetings = new Map<String,Meeting>();
   public myMeetingsSubject = new Subject<Map<String,Meeting>>();
+
+  private slideMeetings = new Map<String,Meeting>();
+  public slideMeetingsSubject = new Subject<Map<String,Meeting>>();
+
   public connectedUser: User;
 
   constructor(private firestore: AngularFirestore) {
@@ -21,14 +25,23 @@ export class MeetingService {
     meetingsCollection.add({
       title: meeting.title,
       sport: meeting.sport,
+      level: meeting.level,
+      spirit: meeting.spirit,
       nb_peoples: meeting.nb_peoples,
       location: meeting.location,
+      cost: meeting.cost,
       date: meeting.date,
       description: meeting.description,
       user: meeting.user
     });
   }
-  emitMyMeetingsSubject(){
+
+  public update(meeting: Meeting,id: string){
+    const meetingsCollection = this.firestore.collection('Meetings');
+    meetingsCollection.doc(id).update(meeting);
+  }
+
+  public emitMyMeetingsSubject(){
     this.myMeetingsSubject.next(this.myMeetings);
   }
 
@@ -48,20 +61,26 @@ export class MeetingService {
     });
   }
 
-  public getSlideMeetings(): Promise<Map<String,Meeting>> {
-    return new Promise<Map<String,Meeting>>(resolve => {
-      const meetingsCollection: AngularFirestoreCollection<Meeting> = this.firestore.collection('Meetings');
-      meetingsCollection.get().toPromise().then(array => {
-        const meetings: Map<String,Meeting> = new Map<String, Meeting>();
-        array.forEach(doc => {
-          const meeting = doc.data() as Meeting;
-          const id = doc.id;
-          meetings.set(id,meeting);
-        });
-        resolve(meetings);
+  public emitSlideMeetingsSubject(){
+    this.slideMeetingsSubject.next(this.slideMeetings);
+  }
+
+  public clearSlideMeetingsSubject(){
+    this.slideMeetings.clear();
+  }
+
+  public getSlideMeetings(){
+    const meetingsCollection: AngularFirestoreCollection<Meeting> = this.firestore.collection('Meetings');
+    meetingsCollection.snapshotChanges().subscribe(value => {
+      value.forEach(action => {
+        const data = action.payload.doc.data() as Meeting;
+        const id = action.payload.doc.id;
+        this.slideMeetings.set(id,data);
       });
+      this.emitSlideMeetingsSubject();
     });
   }
+
 
 
 
