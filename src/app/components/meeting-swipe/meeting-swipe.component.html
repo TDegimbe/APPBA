@@ -8,7 +8,7 @@
   <div class="app-middle">
     <div class="app-user-container">
       <div class="app-user-info" *ngIf="loaded">
-        <div class="app-pp"> {{ user.firstname.charAt(0) }} {{ user.lastname.charAt(0) }}</div>
+        <app-user-pp [user]="user"></app-user-pp>
         <span> {{ user.firstname }}</span>
       </div>
     </div>

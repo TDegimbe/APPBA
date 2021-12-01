@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MeetingSwipeComponent} from "./meeting-swipe.component";
-import {UserPpModule} from "../user-pp/user-pp.module";
+import {UserPpComponent} from "./user-pp.component";
 
 @NgModule({
   imports: [
@@ -11,13 +10,12 @@ import {UserPpModule} from "../user-pp/user-pp.module";
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    UserPpModule
   ],
   exports: [
-    MeetingSwipeComponent
+    UserPpComponent
   ],
   declarations: [
-    MeetingSwipeComponent
+    UserPpComponent
   ]
 })
-export class MeetingSwipeModule { }
+export class UserPpModule { }

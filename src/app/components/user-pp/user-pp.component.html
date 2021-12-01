@@ -1,0 +1,2 @@
+<div class="app-pp" *ngIf="!isimg" [style.line-height]="el.nativeElement.offsetHeight+'px'" [style.font-size]="((el.nativeElement.offsetHeight) /3)+'px'"><span *ngIf="loaded">{{ user.firstname.charAt(0) }} {{ user.lastname.charAt(0) }}</span></div>
+<img *ngIf="isimg" [src]="src" alt="">

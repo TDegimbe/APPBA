@@ -31,7 +31,8 @@ const routes: Routes = [
   {
     path: 'cgu',
     loadChildren: () => import('./pages/cgu/cgu.module').then( m => m.CguPageModule)
-  },  {
+  },
+  {
     path: 'verifcode',
     loadChildren: () => import('./pages/verifcode/verifcode.module').then( m => m.VerifcodePageModule)
   },
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'meetings-view-filters',
     loadChildren: () => import('./modals/meetings-view-filters/meetings-view-filters.module').then( m => m.MeetingsViewFiltersPageModule)
+  },
+  {
+    path: 'myprofile',
+    loadChildren: () => import('./pages/myprofile/myprofile.module').then( m => m.MyprofilePageModule)
   }
 
 

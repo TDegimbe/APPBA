@@ -1,6 +1,8 @@
 <ion-content>
   <div class="app-container">
-    <div class="app-pp"><span *ngIf="loaded">{{ authService.getUser().firstname.charAt(0) }} {{ authService.getUser().lastname.charAt(0) }}</span></div>
+    <div class="app-pp-container">
+      <app-user-pp *ngIf="loaded" [user]="authService.getUser()"></app-user-pp>
+    </div>
     <p class="app-name" *ngIf="loaded"> {{ authService.getUser().user }}</p>
     <div class="app-btn-container">
       <div class="app-btn">
@@ -10,7 +12,7 @@
         <span>Paramètres</span>
       </div>
       <div class="app-btn">
-        <ion-button>
+        <ion-button [routerLink]="['/myprofile']">
           <ion-icon name="pencil" size="large"></ion-icon>
         </ion-button>
         <span>Profile</span>

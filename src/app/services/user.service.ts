@@ -1,16 +1,23 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/compat/firestore';
 import {User} from '../models/User.model';
 import firebase from "firebase/compat";
 import DocumentData = firebase.firestore.DocumentData;
 import QuerySnapshot = firebase.firestore.QuerySnapshot;
+import {AngularFireStorage} from "@angular/fire/compat/storage";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore, private storage: AngularFireStorage) {}
+
+  public setPP(file,user) {
+    const filePath = 'pp/'+ user.session;
+    return this.storage.upload(filePath, file);
+  }
+
   public add(user: User): void{
     const usersCollection = this.firestore.collection('Users');
     usersCollection.add({email: user.email, email_lowercase: user.email.toLowerCase(), phone: user.phone, password: user.password, user: user.user,

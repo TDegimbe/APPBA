@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back-outline" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title color="white">Mon Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="app-profile-form" *ngIf="loaded">
+    <ion-item lines="none">
+      <app-user-pp [src]="pp_src" [isimg]="imageset" [user]="authService.getUser()"></app-user-pp>
+      <ion-button class="pp-change" (click)="file_push.click()">Changer sa photo de profile</ion-button>
+      <input #file_push type="file" (change)="detectFiles($event)" class="form-control" accept="image/*">
+    </ion-item>
+  </div>
+</ion-content>

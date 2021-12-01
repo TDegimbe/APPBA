@@ -46,16 +46,10 @@ img{
       left: 5px;
       top: 50%;
       transform: translateY(-50%);
-      .app-pp{
+      app-user-pp{
         margin: 0px auto;
         width: 30px;
         height: 30px;
-        background-color: #525252;
-        color: white;
-        line-height: 30px;
-        font-size: 12px;
-        text-align: center;
-        border-radius: 50%;
         display: inline-block;
       }
       span{
@@ -64,6 +58,7 @@ img{
         font-weight: bold;
         font-size: 16px;
         color: #525252;
+        vertical-align: top;
       }
     }
     .app-buttons-container{
