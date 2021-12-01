@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
+import {CompressImageService} from "../../services/compressimage.service";
 
 @Component({
   selector: 'app-myprofile',
@@ -17,7 +18,8 @@ export class MyprofilePage implements OnInit {
   public imageset = false;
 
 
-  constructor(public authService: AuthService, private userService: UserService, public router: Router) {
+  constructor(public authService: AuthService, private userService: UserService, public router: Router,
+              private compressImage: CompressImageService) {
   }
 
   ngOnInit() {
@@ -39,15 +41,19 @@ export class MyprofilePage implements OnInit {
   onUploadFile(file: File) {
     if(!this.fileisuploading){
       this.fileisuploading = true;
-      this.userService.setPP(file,this.authService.getUser()).then(
-        (task) => {
-          if(task.state == "success"){
-            task.ref.getDownloadURL().then(value => {
-              this.pp_src = value;
-              this.imageset = true;
-            })
-          }
-        });
+      this.compressImage.compress(file).subscribe(filecompressed => {
+        this.userService.setPP(filecompressed,this.authService.getUser()).then(
+          (task) => {
+            if(task.state == "success"){
+              console.log("success");
+              task.ref.getDownloadURL().then(value => {
+                console.log("updateview")
+                this.pp_src = value;
+                this.imageset = true;
+              })
+            }
+          });
+      });
     }
   }
 
