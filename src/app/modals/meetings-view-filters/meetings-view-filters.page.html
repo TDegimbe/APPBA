@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="close" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Filtrer les annonces</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="validateModal()">
+        <ion-icon name="checkmark" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="app-filters">
+    <ion-item>
+      <ion-select placeholder="Type de sport" cancelText="Fermer" [(ngModel)]="sport">
+        <ion-select-option>FootBall</ion-select-option>
+        <ion-select-option>Mini-Foot</ion-select-option>
+        <ion-select-option>BasketBall</ion-select-option>
+        <ion-select-option>Tennis</ion-select-option>
+        <ion-select-option>Fitness/Muscu</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+</ion-content>

@@ -36,7 +36,8 @@
         {{ meeting.cost }}</div>
     </div>
     <div class="app-button-container">
-      <ion-button (click)="setFullToggle()">Complet</ion-button>
+      <ion-button *ngIf="meeting.isfull" (click)="setFullToggle()">Complet</ion-button>
+      <ion-button *ngIf="!meeting.isfull" (click)="setFullToggle()">Pas complet</ion-button>
     </div>
   </div>
 </ion-card>

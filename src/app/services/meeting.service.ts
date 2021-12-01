@@ -17,6 +17,10 @@ export class MeetingService {
 
   public connectedUser: User;
 
+  private slideFilters = {
+    sport: undefined
+  };
+
   constructor(private firestore: AngularFirestore) {
   }
 
@@ -32,7 +36,8 @@ export class MeetingService {
       cost: meeting.cost,
       date: meeting.date,
       description: meeting.description,
-      user: meeting.user
+      user: meeting.user,
+      isfull: meeting.isfull
     });
   }
 
@@ -50,6 +55,7 @@ export class MeetingService {
   }
 
   public getMyMeetings(){
+    this.clearMyMeetings();
     const meetingsCollection: AngularFirestoreCollection<Meeting> = this.firestore.collection('Meetings', ref => ref.where("user","==", this.connectedUser.session));
     meetingsCollection.snapshotChanges().subscribe(value => {
       value.forEach(action => {
@@ -70,7 +76,13 @@ export class MeetingService {
   }
 
   public getSlideMeetings(){
-    const meetingsCollection: AngularFirestoreCollection<Meeting> = this.firestore.collection('Meetings');
+    this.clearSlideMeetingsSubject();
+    let meetingsCollection: AngularFirestoreCollection<Meeting>;
+    if(this.slideFilters.sport == undefined){
+      meetingsCollection = this.firestore.collection('Meetings');
+    }else{
+      meetingsCollection = this.firestore.collection("Meetings", ref => ref.where("sport","==", this.slideFilters.sport));
+    }
     meetingsCollection.snapshotChanges().subscribe(value => {
       value.forEach(action => {
         const data = action.payload.doc.data() as Meeting;
@@ -79,6 +91,11 @@ export class MeetingService {
       });
       this.emitSlideMeetingsSubject();
     });
+  }
+
+  public updateSlideFilters(filters){
+    this.slideFilters = filters;
+    this.getSlideMeetings();
   }
 
 

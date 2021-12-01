@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'meetings-view-filters',
+    loadChildren: () => import('./modals/meetings-view-filters/meetings-view-filters.module').then( m => m.MeetingsViewFiltersPageModule)
   }
 
 
