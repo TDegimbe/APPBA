@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 
 // in bytes, compress images larger than 1MB
-const fileSizeMax = 4000;
+const fileSizeMax = 1 * 1024 * 1024;
 // in pixels, compress images have the width or height larger than 1024px
-const widthHeightMax = 250
-const defaultWidthHeightRatio = 1
-const defaultQualityRatio = 0.7
+const widthHeightMax = 1024;
+const defaultWidthHeightRatio = 1;
+const defaultQualityRatio = 0.7;
 
 @Injectable({
   providedIn: 'root'
