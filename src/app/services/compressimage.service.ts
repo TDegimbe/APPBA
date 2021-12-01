@@ -12,12 +12,12 @@ const defaultQualityRatio = 0.7;
   providedIn: 'root'
 })
 export class CompressImageService {
-  compress(file: File): Observable<File> {
+  compress(file: File): Promise<File> {
     const imageType = file.type || 'image/jpeg'
     const reader = new FileReader()
     reader.readAsDataURL(file)
 
-    return Observable.create(observer => {
+    return new Promise(resolve => {
       // This event is triggered each time the reading operation is successfully completed.
       reader.onload = ev => {
         // Create an html image element
@@ -41,7 +41,7 @@ export class CompressImageService {
           ctx.canvas.toBlob(
             // callback, called when blob created
             blob => {
-              observer.next(new File(
+              resolve(new File(
                 [blob],
                 file.name,
                 {
@@ -55,10 +55,7 @@ export class CompressImageService {
           )
         }
       }
-
-      // Catch errors when reading file
-      reader.onerror = error => observer.error(error)
-    })
+    });
   }
 
   private createImage(ev) {

@@ -11,7 +11,7 @@
 <ion-content>
   <div class="app-profile-form" *ngIf="loaded">
     <ion-item lines="none">
-      <app-user-pp [src]="pp_src" [isimg]="imageset" [user]="authService.getUser()"></app-user-pp>
+      <app-user-pp *ngIf="!fileisuploading" [src]="pp_src" [isimg]="imageset" [user]="authService.getUser()"></app-user-pp>
       <ion-button class="pp-change" (click)="file_push.click()">Changer sa photo de profil</ion-button>
       <input #file_push type="file" (change)="detectFiles($event)" class="form-control" accept="image/*">
     </ion-item>

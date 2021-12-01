@@ -1,6 +1,7 @@
-import {Component, ElementRef, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {User} from "../../models/User.model";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-user-pp',
@@ -13,6 +14,7 @@ export class UserPpComponent implements OnInit {
   @Input() user: User;
   @Input() isimg = false;
   @Input() src = "";
+  @Input() events: Observable<void>;
 
   constructor(public el: ElementRef, public firestore: AngularFireStorage) { }
 
