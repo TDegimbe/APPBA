@@ -15,6 +15,7 @@ export class UserPpComponent implements OnInit {
   @Input() isimg = false;
   @Input() src = "";
   @Input() events: Observable<void>;
+  @Input() isHome = false;
 
   constructor(public el: ElementRef, public firestore: AngularFireStorage) { }
 

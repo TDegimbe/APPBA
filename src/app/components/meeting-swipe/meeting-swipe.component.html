@@ -39,7 +39,7 @@
     <div class="app-badge">
       <ion-icon name="speedometer"></ion-icon>
       {{ meeting.level }}</div>
-    <div class="app-badge" *ngIf="meeting.cost != ''">
+    <div class="app-badge" *ngIf="meeting.cost != '' && meeting.cost != null">
       <ion-icon name="logo-euro"></ion-icon>
       {{ meeting.cost }}€</div>
   </div>

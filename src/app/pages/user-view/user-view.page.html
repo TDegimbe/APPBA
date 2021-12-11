@@ -1,7 +1,7 @@
 <ion-content>
   <div class="app-container">
     <div class="app-pp-container">
-      <app-user-pp *ngIf="loaded" [user]="authService.getUser()"></app-user-pp>
+      <app-user-pp [isHome]="true" *ngIf="loaded" [user]="authService.getUser()"></app-user-pp>
     </div>
     <p class="app-name" *ngIf="loaded"> {{ authService.getUser().user }}</p>
     <div class="app-btn-container">
