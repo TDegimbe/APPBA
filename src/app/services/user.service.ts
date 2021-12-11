@@ -24,27 +24,31 @@ export class UserService {
       user_lowercase: user.user.toLowerCase(),lastname: user.lastname, firstname: user.firstname,session: user.session});
   }
 
-  public getAll(): Promise<User[]>{
-    return new Promise((resolve) => {
-      const usersList: User[] = [];
-      const usersCollection = this.firestore.collection('Users');
-      usersCollection.get().toPromise()
-        .then((querySnapshot: QuerySnapshot<DocumentData>) => {
-          querySnapshot.forEach((user: any) => {
-            const data = user.data();
-            const newUser = new User(
-              data.email,
-              data.phone,
-              data.password,
-              data.user,
-              data.lastname,
-              data.firstname,
-              data.session
-            );
-            usersList.push(newUser);
-            resolve(usersList);
+  public del(user: User): Promise<boolean>{
+    return new Promise((resolve,reject) => {
+      const meetingsCollection = this.firestore.collection('Meetings');
+      const queryMeeting = meetingsCollection.ref.where("user","==",user.session);
+
+      queryMeeting.get().then(array => {
+        if(!array.empty){
+          array.forEach(doc => {
+            this.firestore.doc(doc.ref).delete();
           });
-        });
+        }
+      })
+
+      const usersCollection = this.firestore.collection('Users');
+      const query = usersCollection.ref.where("session","==",user.session);
+      query.get().then(array => {
+        if(!array.empty){
+          const data: any = array.docs[0].data();
+          this.firestore.doc(array.docs[0].ref).delete().then(() => {
+            resolve(true);
+          });
+        }else{
+          reject(new Error('Not found'));
+        }
+      })
     });
   }
 

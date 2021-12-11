@@ -1,9 +1,62 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>settings</ion-title>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back-outline" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title color="white">Réglages</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="settings-cat">
+    <ion-label>
+      Contactez-nous
+    </ion-label>
+  </div>
+
+  <div class="setting">
+    <ion-item lines="none">
+      <ion-label>
+        contact@miiga.be
+      </ion-label>
+    </ion-item>
+  </div>
+  <div class="setting">
+    <ion-item lines="none">
+      <ion-label>
+        +32 470 093 476
+      </ion-label>
+    </ion-item>
+  </div>
+
+  <div class="settings-cat">
+    <ion-label>
+      Mentions légales
+    </ion-label>
+  </div>
+  <div class="setting">
+    <ion-item [routerLink]="['/cgu']" lines="none">
+      <ion-label>
+        Conditions générales d'utilisation
+      </ion-label>
+    </ion-item>
+  </div>
+
+  <div class="settings-cat">
+    <ion-label>
+      Mon Compte
+    </ion-label>
+  </div>
+
+  <div class="setting">
+    <ion-item lines="none">
+      <ion-label style="color: red" (click)="presentAlertConfirm()">
+        Supprimer mon compte
+      </ion-label>
+    </ion-item>
+  </div>
+  <div class="version">
+    <p>Miiga V0.4 Beta</p>
+  </div>
 
 </ion-content>
