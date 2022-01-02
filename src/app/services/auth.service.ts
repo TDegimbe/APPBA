@@ -69,7 +69,11 @@ export class AuthService {
 
   public hasLocalStorage() : boolean{
     const session = localStorage.getItem("session");
-    return session !== "undefined";
+    if(session !== null  && session !== "undefined" && session !== undefined){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   public setUser(user){

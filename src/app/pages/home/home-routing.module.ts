@@ -7,19 +7,21 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomePage,
-    canActivate: [AuthGuard],
     children: [
       {
         path: 'user-view',
-        loadChildren: () => import('../user-view/user-view.module').then( m => m.UserViewPageModule)
+        loadChildren: () => import('../user-view/user-view.module').then( m => m.UserViewPageModule),
+        canActivate: [AuthGuard]
       },
       {
         path: 'my-meetings',
-        loadChildren: () => import('../my-meetings/my-meetings.module').then(m => m.MyMeetingsPageModule)
+        loadChildren: () => import('../my-meetings/my-meetings.module').then(m => m.MyMeetingsPageModule),
+        canActivate: [AuthGuard]
       },
       {
         path: 'meetings-view',
-        loadChildren: () => import('../meetings-view/meetings-view.module').then(m => m.MeetingsViewPageModule)
+        loadChildren: () => import('../meetings-view/meetings-view.module').then(m => m.MeetingsViewPageModule),
+        canActivate: [AuthGuard]
       }
     ]
   },

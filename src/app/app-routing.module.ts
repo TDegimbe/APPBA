@@ -6,7 +6,8 @@ import {NonauthGuard} from "./guard/nonauth.guard";
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'connection-choice',
@@ -34,19 +35,23 @@ const routes: Routes = [
   },
   {
     path: 'verifcode',
-    loadChildren: () => import('./pages/verifcode/verifcode.module').then( m => m.VerifcodePageModule)
+    loadChildren: () => import('./pages/verifcode/verifcode.module').then( m => m.VerifcodePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'settings',
-    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
+    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'meetings-view-filters',
-    loadChildren: () => import('./modals/meetings-view-filters/meetings-view-filters.module').then( m => m.MeetingsViewFiltersPageModule)
+    loadChildren: () => import('./modals/meetings-view-filters/meetings-view-filters.module').then( m => m.MeetingsViewFiltersPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'myprofile',
-    loadChildren: () => import('./pages/myprofile/myprofile.module').then( m => m.MyprofilePageModule)
+    loadChildren: () => import('./pages/myprofile/myprofile.module').then( m => m.MyprofilePageModule),
+    canActivate: [AuthGuard]
   }
 
 
