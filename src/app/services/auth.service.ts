@@ -54,14 +54,18 @@ export class AuthService {
       if (!this.isLogged()) {
         if (this.hasLocalStorage()) {
           const session = localStorage.getItem("session");
-          this.userService.getBySession(session).then(user => {
+          this.userService.getBySession(session)
+            .then(user => {
             if (user !== undefined) {
               this.setUser(user);
             } else {
               this.logout();
             }
             resolve(true);
-          });
+          })
+            .catch(error => {
+              this.logout();
+            });
         }
       }
     });
