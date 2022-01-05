@@ -52,7 +52,11 @@ const routes: Routes = [
     path: 'myprofile',
     loadChildren: () => import('./pages/myprofile/myprofile.module').then( m => m.MyprofilePageModule),
     canActivate: [AuthGuard]
+  },  {
+    path: 'achievements',
+    loadChildren: () => import('./pages/achievements/achievements.module').then( m => m.AchievementsPageModule)
   }
+
 
 
 
